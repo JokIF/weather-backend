@@ -87,7 +87,7 @@ class TGUserBaseAbstract(models.Model):
 
 
 
-class TGUserAbstract(TGUserBaseAbstract, PermissionsMixin, GuardMixin):
+class TGUserAbstract(TGUserBaseAbstract, PermissionsMixin):
     username_validator = UnicodeUsernameValidator()
 
     user_id = models.BigIntegerField(
