@@ -34,20 +34,13 @@ class TGUserManager(UserManager):
         user.save()
         return user
     
-    create_user = partialmethod(_create_user, 
-                                is_guard=False,
+    create_user = partialmethod(_create_user,
                                 is_staff=False,
                                 is_superuser=False)
     
-    create_superuser = partialmethod(_create_user, 
-                                     is_guard=False,
+    create_superuser = partialmethod(_create_user,
                                      is_staff=True,
                                      is_superuser=True)
-    
-    create_guarduser = partialmethod(_create_user, 
-                                     is_guard=True,
-                                     is_staff=False,
-                                     is_superuser=False)
 
     def get_by_natural_key(self, user_id: str | None) -> Any:
         return self.get(**{self.model.ID_FIELD: user_id})
