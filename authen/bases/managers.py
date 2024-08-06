@@ -2,7 +2,7 @@ from django.contrib.auth.models import UserManager
 from django.contrib.auth.hashers import make_password
 from django.db import models
 
-from typing import Any
+from typing import Any, Optional
 from functools import partialmethod
 from contextlib import suppress
 
@@ -10,8 +10,8 @@ from contextlib import suppress
 class TGUserManager(UserManager):
     def _create_user(self, 
                      user_id, 
-                     password: str, 
                      username: str,
+                     password: Optional[str] = None, 
                      is_guard: bool = False,
                      is_staff: bool = False,
                      is_superuser: bool = False,
