@@ -7,6 +7,7 @@ from functools import partial
 
 class UserCredit:
     def __init__(self, mapped, prefix="user", sep="-"):
+        assert hasattr(mapped, "get"), "'mapped' must have a get method"
         self.mapped = mapped
         self._prefix = prefix
         self._sep = sep
