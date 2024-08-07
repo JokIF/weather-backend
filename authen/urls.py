@@ -1,7 +1,7 @@
 from django.urls import path
 from rest_framework.routers import SimpleRouter
 
-from authen.views.tg_owner import OwnerViewSet
+from authen.views import OwnerViewSet
 
 
 app_name = "authen"

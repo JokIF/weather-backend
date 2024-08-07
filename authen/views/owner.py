@@ -1,7 +1,7 @@
 from rest_framework.viewsets import ModelViewSet
 from rest_framework.permissions import IsAuthenticated, IsAdminUser
 from authen.models import TGOwner
-from authen.serializers.tg_basic import TGOwnerModelSerializer
+from authen.serializers import TGOwnerModelSerializer
 from authen.backend.permissions import TGIsAdminOrOwner
 
 
