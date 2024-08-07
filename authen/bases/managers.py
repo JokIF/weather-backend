@@ -12,7 +12,6 @@ class TGUserManager(UserManager):
                      user_id, 
                      username: str,
                      password: Optional[str] = None, 
-                     is_guard: bool = False,
                      is_staff: bool = False,
                      is_superuser: bool = False,
                      **extra_fields: Any):
@@ -27,7 +26,6 @@ class TGUserManager(UserManager):
         user = self.model(password=password, 
                           user_id=user_id, 
                           username=username,
-                          is_guard=is_guard,
                           is_staff=is_staff,
                           is_superuser=is_superuser,
                           **extra_fields)
@@ -47,19 +45,8 @@ class TGUserManager(UserManager):
     
 
 class TGOwnerManager(models.Manager):
-    def create_owner(self, user_id, password, **extra_fields):
-        owner_kwargs = {}
-        for field in self.model._meta.get_fields():
-            with suppress(KeyError):
-                owner_kwargs.setdefault(field.name, extra_fields.pop(field.name))
-
-        user = self.model._meta.get_field("tg_user").related_model._default_manager.create_user(
-            user_id=user_id,
-            password=password,
-            **extra_fields
-        )
-        owner_kwargs["tg_user"] = user
-        owner = self.model(**owner_kwargs)
+    def create_owner(self, user, **extra_fields):
+        owner = self.model(tg_user=user, **extra_fields)
         owner.save()
         return owner
     

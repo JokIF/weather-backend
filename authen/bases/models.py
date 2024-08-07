@@ -9,7 +9,6 @@ from django.contrib.auth.hashers import (
 )
 
 from authen.bases.managers import TGUserManager
-from authen.bases.mixins import GuardMixin
 
 
 LANGUAGE_CHOICE = translation.trans_real.get_languages()

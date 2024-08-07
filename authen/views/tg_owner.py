@@ -12,8 +12,8 @@ class OwnerViewSet(ModelViewSet):
 
     def get_permissions(self):
         permission_classes = self.permission_classes
-        if self.request.parser_context.get("kwargs"):
+        if self.action == "update" or self.action == "retrieve":
             permission_classes = (*permission_classes, TGIsAdminOrOwner)
-        else:
-            permission_classes = (*permission_classes, IsAdminUser)
-        return [permission() for permission in self.permission_classes]
+        elif self.action == "create":
+            permission_classes = ()
+        return [permission() for permission in permission_classes]
