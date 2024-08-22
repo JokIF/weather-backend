@@ -1,4 +1,5 @@
-from .owner_create import TGOwnerModelSerializer
+from .owner_create import TGOwnerCreateModelSerializer
+from .owner_get_update import TGOwnerRetrieveUpdateModelSerializer
 
 
-__all__ = ("TGOwnerModelSerializer",)
+__all__ = ("TGOwnerCreateModelSerializer", "TGOwnerRetrieveUpdateModelSerializer")

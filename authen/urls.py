@@ -1,12 +1,12 @@
 from django.urls import path
-from rest_framework.routers import SimpleRouter
 
 from authen.views import OwnerViewSet
+from authen.routes import OwnerViewRouter
 
 
 app_name = "authen"
 
-router = SimpleRouter()
+router = OwnerViewRouter()
 router.register("owners", OwnerViewSet, "owners")
 
 urlpatterns = router.urls

@@ -1,20 +1,12 @@
-from rest_framework import serializers as serialz
+from rest_framework import serializers as srlz
+
+from authen.serializers.user_create import TGUserModelSerializer
 from authen.models import TGUser, TGOwner
-
-
-class TGUserModelSerializer(serialz.ModelSerializer):
-    class Meta:
-        model = TGUser
-        fields = ["user_id", "username", "password"]
-        extra_kwargs = {"password": {"write_only": True, "default": None}}
-
-    def create(self, validated_data):
-        return TGUser.objects.create_user(**validated_data)
     
 
-class TGOwnerModelSerializer(serialz.ModelSerializer):
-    user_id = serialz.IntegerField(source="tg_user.user_id")
-    username = serialz.CharField(source="tg_user.username")
+class TGOwnerCreateModelSerializer(srlz.ModelSerializer):
+    user_id = srlz.IntegerField(source="tg_user.user_id")
+    username = srlz.CharField(source="tg_user.username")
 
     class Meta:
         model = TGOwner
