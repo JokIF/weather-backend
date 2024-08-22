@@ -1,6 +1,8 @@
 from rest_framework.permissions import BasePermission, IsAdminUser
 from django.contrib.auth import get_user_model
 
+from authen.models import TGOwner
+
 
 class BaseIsAdminOrOwner(BasePermission):
     user_from_obj = None
@@ -17,4 +19,4 @@ class BaseIsAdminOrOwner(BasePermission):
     
 
 class TGIsAdminOrOwner(BaseIsAdminOrOwner):
-    user_from_obj = "tg_user" #поменять после TGOwnerModel
+    user_from_obj = TGOwner.TGUSER_RELATE_FIELD

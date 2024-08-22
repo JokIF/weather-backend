@@ -6,7 +6,7 @@ from functools import partial
 #password-<password_name>
 
 class UserCredit:
-    def __init__(self, mapped, prefix="user", sep="-"):
+    def __init__(self, mapped, prefix="User", sep="-"):
         assert hasattr(mapped, "get"), "'mapped' must have a get method"
         self.mapped = mapped
         self._prefix = prefix
@@ -15,6 +15,6 @@ class UserCredit:
     def _get_name(self, name: str):
         return self.mapped.get(f"{self._prefix}{self._sep}{name}")
     
-    token = property(partial(_get_name, name="token"))
-    id = property(partial(_get_name, name="id"))
-    password = property(partial(_get_name, name="password"))
+    token = property(partial(_get_name, name="Token"))
+    id = property(partial(_get_name, name="Id"))
+    password = property(partial(_get_name, name="Password"))

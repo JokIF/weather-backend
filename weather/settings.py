@@ -47,13 +47,15 @@ MIDDLEWARE = [
     'authen.backend.middleware.AuthenMiddleware',
     'weather.middleware.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
+    # 'django.middleware.csrf.CsrfViewMiddleware',
 ]
 
 AUTHENTICATION_BACKENDS = [
     'authen.backend.backends.ModelBackend',
     # 'sesame.backends.ModelBackend'
 ]
+
+CSRF_USE_SESSIONS = False
 
 AUTH_USER_MODEL = "authen.TGUser"
 
